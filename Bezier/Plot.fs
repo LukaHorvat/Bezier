@@ -3,7 +3,11 @@
 open Vector
 open Picture
 
+let random = System.Random()
+
 let line (Vector(x, y)) delta color = 
+//    let delta = max -100.0 (min 100.0 delta)
+    let delta = delta + (random.NextDouble() - 0.5)
     let right = float (float Display.width - x) * delta + y
     let left = float (0.0 - x) * delta + y
     let inv = 1.0 / delta

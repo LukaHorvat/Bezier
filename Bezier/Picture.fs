@@ -25,3 +25,8 @@ let rec flipVertical axisY picture =
         let flipVec (Vector(x, y)) = Vector(x, 2.0 * axisY - y)
         Line(flipVec s, flipVec e, c)
     | Pictures list -> Pictures (List.map (flipVertical axisY) list)
+
+let rec shift delta pic =
+    match pic with
+    | Line(s, e, c) -> Line(s + delta, e + delta, c)
+    | Pictures list -> Pictures (List.map (shift delta) list) 
